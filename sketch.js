@@ -1,5 +1,3 @@
-// Adapted from https://p5js.org/examples/interaction-snake-game.html
-//
 var host = "localhost:4444";
 $(document).ready(function() {
   frames.start();
@@ -64,3 +62,4 @@ var frames = {
     return command
   }
 };
+
