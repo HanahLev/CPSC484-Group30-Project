@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HCI Project Group30</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- div for the scores -->
+    <div>
+      <p>page 10-blue-attack1</p>
+      <h2>PERFORM COUNTER ATTACK</h2>
+      <p id="result"></p>
+    </div>
+
+    <!-- general information div -->
+    <div>
+      <p>general gameplay here</p>
+      <button onclick="redirect()">Click to redirect</button>
+    </div>
+
+    <script>
+      function redirect() {
+        setTimeout(myURL, 3000);
+        var result = document.getElementById("result");
+        result.innerHTML =
+          "<b> The page will redirect after delay of 3 seconds";
+      }
+
+      function myURL() {
+        document.location.href = "11-blue-attack-results.html";
+      }
+    </script>
+  </body>
+</html>
