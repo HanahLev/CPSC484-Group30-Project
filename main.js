@@ -1,5 +1,3 @@
-var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
-
 var host = "cpsc484-03.yale.internal:8888";
 $(document).ready(function() {
   frames.start();
