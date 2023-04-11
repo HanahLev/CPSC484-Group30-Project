@@ -1,6 +1,71 @@
 html, body {
-    margin: 0;
+    background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2386&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:#000000;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+  }
+
+  button {
+    background-color: rgb(0, 111, 0);
+    border: none;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    transition-duration: 0.3s;
+    margin: 16px;
+  }
+
+  button:hover {
+    background-color: rgb(0, 80, 0);
+  }
+
+  button.red-button {
+    background-color: red;
+  }
+
+  button.red-button:hover {
+    background-color: darkred;
+  }
+
+  button.blue-button {
+    background-color: blue;
+  }
+
+  button.blue-button:hover {
+    background-color: darkblue;
+  }
+
+  input {
+    padding: 4px;
+    border: 3px solid #ccc;
+    transition: 0.3s;
+    outline: none;
+  }
+
+  input:focus {
+    border: 3px solid #555;
+  }
+
+  .red-text {
+    color: red;
+  }
+
+  .blue-text {
+    color: blue;
+  }
+
+  .flex-parent {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+  }
+
+  .flex-parent div {
+    flex: 1;
   }
 
   .container {
