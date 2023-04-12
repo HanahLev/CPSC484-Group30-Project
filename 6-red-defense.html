@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HCI Project Group30</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header div -->
+    <div>
+      <p>page 6-red-defense</p>
+      <h2>Asteroids left: X</h2>
+      <p id = "result"></p>
+    </div>
+
+    
+    <!-- main div -->
+    <div>
+      <button onclick="redirect()">
+       Click to redirect
+      </button>
+    </div>
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script>
+        function redirect () {
+           setTimeout(myURL, 3000);
+           var result = document.getElementById("result");
+           result.innerHTML = "<b> The page will redirect after delay of 3 seconds";
+        }
+  
+        function myURL() {
+           document.location.href = '7-red-defense-results.html';
+        }
+     </script>
+  </body>
+</html>
