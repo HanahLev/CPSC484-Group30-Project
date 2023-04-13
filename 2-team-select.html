@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <title>HCI Project Group30</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    </style>
   </head>
   <body>
     <!-- div for the scores -->
@@ -16,17 +12,18 @@
        <p>page 2-team-select</p> 
        <h2>DECLARE YOUR LOYALTIES</h2>
     </div>
+    <div class="flex-parent">
+      <div>
+        <h5 class="red-text" >Hover here to join RED (click for now)</h5>
+        <button class="red-button" onclick="document.location='3-red-enter-name.html'">Red Team</button>
+      </div>
 
-    <div>
-      <h5>Hover here to join RED (click for now)</h5>
-      <button onclick="document.location='3-red-enter-name.html'">Red Team</button>
-    </div>
+      <p>VS</p>
 
-    <p>VS</p>
-
-    <div>
-      <h5>Hover here to join BLUE (click for now)</h5>
-      <button onclick="document.location='3-blue-enter-name.html'">Blue Team</button>
+      <div>
+        <h5 class="blue-text" >Hover here to join BLUE (click for now)</h5>
+        <button class="blue-button" onclick="document.location='3-blue-enter-name.html'">Blue Team</button>
+      </div>
     </div>
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
