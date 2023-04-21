@@ -1,5 +1,5 @@
 html, body {
-  background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2386&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2386&q=80"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-color:#000000;
@@ -26,7 +26,7 @@ html, body {
 }
 
 button {
-  background-color: rgb(0, 111, 0);
+  background-color: rgb(0, 0, 0);
   border: none;
   color: white;
   padding: 16px;
@@ -36,11 +36,12 @@ button {
 }
 
 button:hover {
-  background-color: rgb(0, 80, 0);
+  background-color: rgb(80, 80, 80);
 }
 
 button.red-button {
   background-color: red;
+  font-weight: bolder;
 }
 
 button.red-button:hover {
@@ -49,6 +50,7 @@ button.red-button:hover {
 
 button.blue-button {
   background-color: blue;
+  font-weight: bolder;
 }
 
 button.blue-button:hover {

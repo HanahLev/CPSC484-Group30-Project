@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: linear-gradient(
+  to right,
+  red 0%,
+  red 50%,
+  blue 50%,
+  blue 100%
+);">
   <head>
     <link rel="stylesheet" href="style.css" />
     <title>HCI Project Group30</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body style="background: linear-gradient(
+    to right,
+    red 0%,
+    red 50%,
+    blue 50%,
+    blue 100%
+  );">
     <!-- div for the scores -->
     <div>
        <!-- <p>page 2-team-select</p>  -->
@@ -14,15 +26,15 @@
     </div>
     <div class="flex-parent">
       <div>
-        <h5 class="red-text" >Hover here to join RED (click for now)</h5>
-        <button class="red-button" onclick="document.location='3-red-enter-name.html'">Red Team</button>
+        <h3>Hover to join <br><b style="font-weight: bolder;">RED</b></h3>
+        <button style="width: 56.5%; height: 100%; background: url(red-crest.png); background-size: cover;" onclick="document.location='3-red-enter-name.html'"></button>
       </div>
 
       <p>VS</p>
 
       <div>
-        <h5 class="blue-text" >Hover here to join BLUE (click for now)</h5>
-        <button class="blue-button" onclick="document.location='3-blue-enter-name.html'">Blue Team</button>
+        <h3>Hover to join <br><b style="font-weight: bolder;">BLUE</b></h3>
+        <button style="width: 60%; height: 100%; background: url(blue-crest.png); background-size: cover;" onclick="document.location='3-blue-enter-name.html'"></button>
       </div>
     </div>
 
