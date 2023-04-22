@@ -19,7 +19,7 @@ var frames = {
     frames.socket.onmessage = function (event) {
       var command = frames.get_left_hand_tip_coordinates(JSON.parse(event.data));
       if (command !== null) {
-        sendWristCommand(command);
+        collision_detector(command);
       }
     }
   },
@@ -98,10 +98,43 @@ var frames = {
 };
 
 //##########################################################################################################//
+//                                               CURSOR EVENTS                                              //
+//##########################################################################################################//
+
+function collision_detector(command) {
+  var collision = false;
+
+  const nodeList = document.querySelectorAll("button");
+
+  for (let i = 0; i < nodeList.length; i++){
+    var top_left = $(nodeList[i]).position();
+    var width = $(nodeList[i]).width();
+    var height = $(nodeList[i]).height();
+
+    bottom = top_left.top + height;
+    right = top_left.left + width;
+
+    if ((command[1] > top_left.top) && (command[1] < bottom) && (command[0] > top_left.left) && (command[0] < right)){
+      collision = true;
+      break;
+    }
+  }
+
+  if (collision){
+    var myurl = b.dataset.url;
+
+    redirect(myurl);
+  }
+  else{
+    cancel_redirect();
+  }
+}
+
+//##########################################################################################################//
 //                                               REDIRECTS                                                  //
 //##########################################################################################################//
 
-timeout_var
+var timeout_var;
 
 // REDIRECTS
 function redirect(myurl) {
@@ -119,6 +152,6 @@ function myURL(myurl) {
 
 // CANCEL REDIRECT
 function cancel_redirect() {
-  clearTimeout(timeout_var)
+  clearTimeout(timeout_var);
 }
 
