@@ -18,12 +18,55 @@
 
     <!-- general information div -->
     <div>
-      <h3>Recent Players</h3>
-      <h2>Player: Team: Attacks: Score:</h2>
+      <h2>Recent Players</h2>
+
+      <!-- div for the general information -->
+      <div class="row">
+        <div class="column-6">
+          <h2></h2>
+        </div>
+        <div class="column-6">
+          <h2>Player</h2>
+        </div>
+        <div class="column-6">
+          <h2>Team</h2>
+        </div>
+        <div class="column-6">
+          <h2>Attack</h2>
+        </div>
+        <div class="column-6">
+          <h2>Score</h2>
+        </div>
+        <div class="column-6">
+          <h2></h2>
+        </div>      
+      </div>
+
+      <!-- div for player -->
+      <div class="row">
+        <div class="column-6">
+          <h2></h2>
+        </div>
+        <div class="column-6">
+          <h2>---</h2>
+        </div>
+        <div class="column-6">
+          <h2>---</h2>
+        </div>
+        <div class="column-6">
+          <h2>---</h2>
+        </div>
+        <div class="column-6">
+          <h2>---</h2>
+        </div>
+        <div class="column-6">
+          <h2></h2>
+        </div>      
+      </div>
     </div>
 
     <div>
-      <button onclick="document.location='8-blue-attack-choice.html'">
+      <button onmouseenter="redirect('8-blue-attack-choice')" onmouseleave="cancel_redirect()">
         Continue to Counter-attack
       </button>
     </div>

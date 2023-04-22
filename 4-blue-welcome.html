@@ -14,6 +14,10 @@
     </div>
 
     <div>
+      <img src="blue-crest.png" alt="Blue Crest" style="height: 100px;">
+    </div>
+
+    <div>
       <h2>How to play</h2>
       <p>The objective of this game is to BEAT THE RED TEAM!<br><br>
         You will start by defending the Blue Team's honor against the previous Red Team attacks. Then, you will be able to select your best attack, and take down the enemy!</p>
@@ -21,15 +25,11 @@
 
     <div class="flex-parent">
       <div>
-        <button onclick="document.location='3-blue-enter-name.html'">
-          Back
-        </button>
+        <button onmouseenter="redirect('3-blue-enter-name.html')" onmouseleave="cancel_redirect()">Back</button>
       </div>
-      
+
       <div>
-        <button onclick="document.location='5-blue-defense-instructions.html'">
-          Next
-        </button>
+        <button onmouseenter="redirect('5-blue-defense-instructions')" onmouseleave="cancel_redirect()">Next</button>
       </div>
     </div>
 

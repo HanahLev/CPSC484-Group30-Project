@@ -14,19 +14,22 @@
     </div>
 
     <div>
+      <img src="red-crest.png" alt="Red Crest" style="height: 100px;">
+    </div>
+
+    <div>
       <h2>Who are you?</h2>
       <p>Please enter your name below</p>
       <input type="text"/>
     </div>
 
-
     <div class="flex-parent">
       <div>
-        <button onclick="document.location='2-team-select.html'">Back</button>
+        <button onmouseenter="redirect('2-team-select.html')" onmouseleave="cancel_redirect()">Back</button>
       </div>
 
       <div>
-        <button onclick="document.location='4-red-welcome.html'">Next</button>
+        <button onmouseenter="redirect('4-red-welcome.html')" onmouseleave="cancel_redirect()">Next</button>
       </div>
     </div>
 

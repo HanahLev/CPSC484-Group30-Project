@@ -1,3 +1,7 @@
+//##########################################################################################################//
+//                                                KINTECT                                                   //
+//##########################################################################################################//
+
 var host = "cpsc484-03.yale.internal:8888";
 $(document).ready(function() {
   frames.start();
@@ -92,4 +96,26 @@ var frames = {
     return command
   }
 };
+
+//##########################################################################################################//
+//                                               REDIRECTS                                                  //
+//##########################################################################################################//
+
+timeout_var
+redirect_time = 3000
+
+// REDIRECTS
+function redirect(myurl) {
+  timeout_var = setTimeout(function (){myURL(myurl)}, 3000);
+}
+
+// URLs
+function myURL(myurl) {
+  document.location.href = myurl;
+}
+
+// CANCEL REDIRECT
+function cancel_redirect() {
+  clearTimeout(timeout_var)
+}
 
