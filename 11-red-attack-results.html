@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: red;" onload="redirect()">
+  <body style="background-color: red;" onload="redirect_load('1-start-screen.html')">
     <!-- div for the scores -->
     <div>
       <!-- <p>page 11-red-attack-results</p> -->
@@ -63,21 +63,12 @@
     </div>
 
     <div>
-      <button onmouseenter="redirect('1-start-screen')" onmouseleave="cancel_redirect()">
+      <button onmouseenter="redirect('1-start-screen.html')" onmouseleave="cancel_redirect()">
         Continue to next player
       </button>
     </div>
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js" type="text/javascript"></script>
-    <script>
-      function redirect() {
-        setTimeout(myURL, 300000);
-      }
-
-      function myURL() {
-        document.location.href = "1-start-screen.html";
-      }
-    </script>
   </body>
 </html>

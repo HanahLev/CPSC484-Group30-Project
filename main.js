@@ -102,11 +102,14 @@ var frames = {
 //##########################################################################################################//
 
 timeout_var
-redirect_time = 3000
 
 // REDIRECTS
 function redirect(myurl) {
   timeout_var = setTimeout(function (){myURL(myurl)}, 3000);
+}
+
+function redirect_load(myurl) {
+  setTimeout(function (){myURL(myurl)}, 300000);
 }
 
 // URLs
