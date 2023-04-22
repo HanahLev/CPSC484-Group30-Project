@@ -70,8 +70,20 @@ var frames = {
       return command;
     }
 
-    command = [left_hand_tip_x, left_hand_tip_y]
-    return command
+    if (left_hand_tip_x < 200 && left_hand_tip_x > -200) {
+      if (left_hand_tip_y > 500) {
+        command = 73; // UP
+      } else if (left_hand_tip_y < 100) {
+        command = 75; // DOWN
+      }
+    } else if (left_hand_tip_y < 500 && left_hand_tip_y > 100) {
+      if (left_hand_tip_x > 200) {
+        command = 76; // RIGHT
+      } else if (left_hand_tip_x < -200) {
+        command = 74; // LEFT
+      }
+    }
+    return command;
   },
 
   right_hand_tip_relative: function (frame) {
@@ -92,8 +104,20 @@ var frames = {
       return command;
     }
 
-    command = [right_hand_tip_x, right_hand_tip_y]
-    return command
+    if (right_hand_tip_x < 200 && right_hand_tip_x > -200) {
+      if (right_hand_tip_y > 500) {
+        command = 73; // UP
+      } else if (right_hand_tip_y < 100) {
+        command = 75; // DOWN
+      }
+    } else if (right_hand_tip_y < 500 && right_hand_tip_y > 100) {
+      if (right_hand_tip_x > 200) {
+        command = 76; // RIGHT
+      } else if (right_hand_tip_x < -200) {
+        command = 74; // LEFT
+      }
+    }
+    return command;
   }
 };
 
