@@ -135,10 +135,13 @@ function collision_detector(command) {
     var width = $(nodeList[i]).width();
     var height = $(nodeList[i]).height();
 
-    bottom = top_left.top + height;
-    right = top_left.left + width;
+    var bottom = top_left.top + height;
+    var right = top_left.left + width;
 
-    if ((command[1] > top_left.top) && (command[1] < bottom) && (command[0] > top_left.left) && (command[0] < right)){
+    var cursor_x = command[0] * (1920/1280)
+    var cursor_y = command[1] * (1080/720)
+
+    if ((cursor_y > top_left.top) && (cursor_y < bottom) && (cursor_x > top_left.left) && (cursor_x < right)){
       collision = true;
       break;
     }
