@@ -115,9 +115,13 @@ input:focus {
 }
 
 canvas {
-  display: block;
+  /* display: block;
   grid-column: 1/2;
-  grid-row: 2/3;
+  grid-row: 2/3; */
+  position: absolute;
+  z-index: 100;
+  width:1920;
+  height:1080;
 }
 
 #kinect-window {
