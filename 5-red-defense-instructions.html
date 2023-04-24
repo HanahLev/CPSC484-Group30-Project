@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: red;">
+  <body style="background-color: red;" onload="redirect_load('1-start-screen.html')">
 
     <!-- div for the scores -->
     <div>
@@ -19,7 +19,7 @@
     </div>
 
     <div>
-      <button onclick="document.location='6-red-defense.html'">
+      <button data-url="6-red-defense.html" onmouseenter="redirect('6-red-defense.html')" onmouseleave="cancel_redirect()">
        LET'S GO!!
       </button>
     </div>

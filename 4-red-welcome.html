@@ -6,11 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: red;">
+  <body style="background-color: red;" onload="redirect_load('1-start-screen.html')">
     <!-- div for the scores -->
     <div>
       <!-- <p>page 4-red-welcome</p> -->
       <h2>WELCOME TO TEAM RED!</h2>
+    </div>
+
+    <div>
+      <img src="red-crest.png" alt="Red Crest" style="height: 100px;">
     </div>
 
     <div>
@@ -21,15 +25,11 @@
 
     <div class="flex-parent">
       <div>
-        <button onclick="document.location='3-red-enter-name.html'">
-          Back
-        </button>
+        <button data-url="3-red-enter-name.html" onmouseenter="redirect('3-red-enter-name.html')" onmouseleave="cancel_redirect()">Back</button>
       </div>
-      
+
       <div>
-        <button onclick="document.location='5-red-defense-instructions.html'">
-          Next
-        </button>
+        <button data-url="5-red-defense-instructions.html" onmouseenter="redirect('5-red-defense-instructions.html')" onmouseleave="cancel_redirect()">Next</button>
       </div>
     </div>
 

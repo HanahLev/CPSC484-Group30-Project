@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: red;">
+  <body style="background-color: red;" onload="redirect_load('1-start-screen.html')">
     <!-- header div -->
     <div>
       <!-- <p>page 8-red-attack-choice</p> -->
@@ -19,9 +19,9 @@
     </div>
 
     <div>
-        <button onclick="document.location='9-red-attack1-instructions.html'">Rhythm Game</button>
-        <button onclick="document.location='9-red-attack1-instructions.html'">Coordination Game</button>
-        <button onclick="document.location='9-raft-rush-instructions.html'">Raft Rush</button>
+        <button data-url="9-red-attack1-instructions.html" onmouseenter="redirect('9-red-attack1-instructions.html')" onmouseleave="cancel_redirect()">Rhythm Game</button>
+        <button data-url="9-red-attack1-instructions.html" onmouseenter="redirect('9-red-attack1-instructions.html')" onmouseleave="cancel_redirect()">Coordination Game</button>
+        <button data-url="9-red-attack1-instructions.html" onmouseenter="redirect('9-red-attack1-instructions.html')" onmouseleave="cancel_redirect()">Agility Game</button>
     </div>
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

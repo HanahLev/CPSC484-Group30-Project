@@ -1,3 +1,7 @@
+//##########################################################################################################//
+//                                                KINTECT                                                   //
+//##########################################################################################################//
+
 var host = "cpsc484-03.yale.internal:8888";
 $(document).ready(function() {
   frames.start();
@@ -15,7 +19,7 @@ var frames = {
     frames.socket.onmessage = function (event) {
       var command = frames.get_left_hand_tip_coordinates(JSON.parse(event.data));
       if (command !== null) {
-        sendWristCommand(command);
+        collision_detector(command);
       }
     }
   },
@@ -66,8 +70,20 @@ var frames = {
       return command;
     }
 
-    command = [left_hand_tip_x, left_hand_tip_y]
-    return command
+    if (left_hand_tip_x < 200 && left_hand_tip_x > -200) {
+      if (left_hand_tip_y > 500) {
+        command = 73; // UP
+      } else if (left_hand_tip_y < 100) {
+        command = 75; // DOWN
+      }
+    } else if (left_hand_tip_y < 500 && left_hand_tip_y > 100) {
+      if (left_hand_tip_x > 200) {
+        command = 76; // RIGHT
+      } else if (left_hand_tip_x < -200) {
+        command = 74; // LEFT
+      }
+    }
+    return command;
   },
 
   right_hand_tip_relative: function (frame) {
@@ -88,8 +104,78 @@ var frames = {
       return command;
     }
 
-    command = [right_hand_tip_x, right_hand_tip_y]
-    return command
+    if (right_hand_tip_x < 200 && right_hand_tip_x > -200) {
+      if (right_hand_tip_y > 500) {
+        command = 73; // UP
+      } else if (right_hand_tip_y < 100) {
+        command = 75; // DOWN
+      }
+    } else if (right_hand_tip_y < 500 && right_hand_tip_y > 100) {
+      if (right_hand_tip_x > 200) {
+        command = 76; // RIGHT
+      } else if (right_hand_tip_x < -200) {
+        command = 74; // LEFT
+      }
+    }
+    return command;
   }
 };
+
+//##########################################################################################################//
+//                                               CURSOR EVENTS                                              //
+//##########################################################################################################//
+
+function collision_detector(command) {
+  var collision = false;
+
+  const nodeList = document.querySelectorAll("button");
+
+  for (let i = 0; i < nodeList.length; i++){
+    var top_left = $(nodeList[i]).position();
+    var width = $(nodeList[i]).width();
+    var height = $(nodeList[i]).height();
+
+    bottom = top_left.top + height;
+    right = top_left.left + width;
+
+    if ((command[1] > top_left.top) && (command[1] < bottom) && (command[0] > top_left.left) && (command[0] < right)){
+      collision = true;
+      break;
+    }
+  }
+
+  if (collision){
+    var myurl = b.dataset.url;
+
+    redirect(myurl);
+  }
+  else{
+    cancel_redirect();
+  }
+}
+
+//##########################################################################################################//
+//                                               REDIRECTS                                                  //
+//##########################################################################################################//
+
+var timeout_var;
+
+// REDIRECTS
+function redirect(myurl) {
+  timeout_var = setTimeout(function (){myURL(myurl)}, 3000);
+}
+
+function redirect_load(myurl) {
+  setTimeout(function (){myURL(myurl)}, 300000);
+}
+
+// URLs
+function myURL(myurl) {
+  document.location.href = myurl;
+}
+
+// CANCEL REDIRECT
+function cancel_redirect() {
+  clearTimeout(timeout_var);
+}
 

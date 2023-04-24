@@ -6,11 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: blue;">
+  <body style="background-color: blue;" onload="redirect_load('1-start-screen.html')">
     <!-- header div -->
     <div>
       <!-- <p>page 4-blue-welcome</p> -->
       <h2>WELCOME TO TEAM BLUE!</h2>
+    </div>
+
+    <div>
+      <img src="blue-crest.png" alt="Blue Crest" style="height: 100px;">
     </div>
 
     <div>
@@ -21,15 +25,11 @@
 
     <div class="flex-parent">
       <div>
-        <button onclick="document.location='3-blue-enter-name.html'">
-          Back
-        </button>
+        <button data-url="3-blue-enter-name.html" onmouseenter="redirect('3-blue-enter-name.html')" onmouseleave="cancel_redirect()">Back</button>
       </div>
-      
+
       <div>
-        <button onclick="document.location='5-blue-defense-instructions.html'">
-          Next
-        </button>
+        <button data-url="5-blue-defense-instructions.html" onmouseenter="redirect('5-blue-defense-instructions.html')" onmouseleave="cancel_redirect()">Next</button>
       </div>
     </div>
 
