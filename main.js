@@ -8,16 +8,8 @@ $(document).ready(function() {
   // twod.start();
 });
 
-// let cursor_x = 0;
-// let cursor_y = 0;
-
-// let mousePos = { x: undefined, y: undefined };
-
-// window.addEventListener('mousemove', (event) => {
-//   mousePos = { x: event.clientX, y: event.clientY };
-//   mousePosText.textContent = `(${mousePos.x}, ${mousePos.y})`;
-// });
-
+var cursor_x = 0;
+var cursor_y = 0;
 
 var frames = {
   socket: null,
@@ -47,8 +39,8 @@ var frames = {
 
     command = [left_hand_tip_x, left_hand_tip_y]
 
-    // cursor_x = command[0] * (1920/1280)
-    // cursor_y = command[1] * (1080/720)
+    cursor_x = command[0] * (1920/1280)
+    cursor_y = command[1] * (1080/720)
 
     return command
   },
@@ -65,8 +57,8 @@ var frames = {
 
     command = [right_hand_tip_x, right_hand_tip_y]
 
-    // cursor_x = command[0] * (1920/1280)
-    // cursor_y = command[1] * (1080/720)
+    cursor_x = command[0] * (1920/1280)
+    cursor_y = command[1] * (1080/720)
 
     return command
   },
@@ -144,21 +136,20 @@ var frames = {
 // //                                                CURSOR DRAW                                               //
 // //##########################################################################################################//
 
-// function setup() {
-//   let cursorCanvas = createCanvas(windowWidth/2, windowHeight/2);
-//   cursorCanvas.parent("canvas-container");
-//   frameRate(3);
-//   stroke(255);
-//   strokeWeight(10);
-// }
+function setup() {
+  let cursorCanvas = createCanvas(windowWidth/2, windowHeight/2);
+  cursorCanvas.parent("canvas-container");
+  frameRate(3);
+  stroke(255);
+  strokeWeight(10);
+}
 
-// function draw() {
-//   circle(cursor_x, cursor_y, 20);
-//   // circle(mousePos.x, mousePos.y, 20);
-//   stroke('white');
-//   strokeWeight(20);
-//   fill('white');
-// }
+function draw() {
+  circle(cursor_x, cursor_y, 20);
+  stroke('white');
+  strokeWeight(20);
+  fill('white');
+}
 
 //##########################################################################################################//
 //                                               CURSOR EVENTS                                              //
