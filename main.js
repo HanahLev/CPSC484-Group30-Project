@@ -17,7 +17,7 @@ var frames = {
     // var url = "ws://" + host + "/twod";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
-      var command = frames.get_left_hand_tip_coordinates(JSON.parse(event.data));
+      var command = frames.get_right_hand_tip_coordinates(JSON.parse(event.data));
       if (command !== null) {
         collision_detector(command);
       }
