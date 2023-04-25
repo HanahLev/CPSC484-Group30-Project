@@ -6,21 +6,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body id="canvas">
     <!-- CDN Link to Three.js -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
     <!-- CDN Link to GLTFLoader -->
-		<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+		<script src="https://rawcdn.githack.com/mrdoob/three.js/r87/examples/js/loaders/GLTFLoader.js"></script>
     <!-- scripts -->
-    <script type="module" src="asteroid_main.js"></script>
-    <script src="asteroid_scene_manager.js"></script>
-    <script type="module" src="asteroid_asteroid.js"></script>
+    <script src="asteroid_asteroid.js"></script>
+    <script src="./asteroid-place-asteroids.js"></script>
+    <script src="./asteroid_scene_manager.js"></script>
+    <script src="./asteroid_main.js"></script>
     <!-- header div -->
-    <div>
+    <!-- <div>
       <p>page 6-blue-defense</p>
       <h2>Asteroids left: X</h2>
       <p id = "result"></p>
-    </div>
+    </div> -->
 
     
     <!-- main div -->

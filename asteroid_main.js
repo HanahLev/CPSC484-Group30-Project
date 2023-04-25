@@ -1,23 +1,5 @@
 // Main: has access to DOM and contains SceneManager
 
-// asteroid model files into array
-const fs = require("fs");
-const path = require("path");
-
-const directoryPath = "asteroid_assets/asteroids_specifically";
-
-fs.readdir(directoryPath, (err, files) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  const filePaths = files.map((file) => path.join(directoryPath, file));
-});
-
-export default filePaths;
-
-
 // create SceneManager
 const canvas = document.getElementById("canvas");
 const sceneManager = new SceneManager(canvas);
@@ -29,10 +11,12 @@ bindEventListeners();
 render();
 
 
-
 function bindEventListeners() {
 	window.onresize = resizeCanvas;
 	resizeCanvas();	
+
+	window.onkeydown = handleKeyDown;
+	window.onkeyup = handleKeyUp;
 }
 
 function resizeCanvas() {
@@ -43,6 +27,16 @@ function resizeCanvas() {
 	canvas.height = canvas.offsetHeight;
     
     sceneManager.onWindowResize();
+}
+
+function handleKeyDown(event) {
+	var keyCode = event.which;
+	sceneManager.handleInput(keyCode, true);
+}
+
+function handleKeyUp(event) {
+	var keyCode = event.which;
+	sceneManager.handleInput(keyCode, false);
 }
 
 
