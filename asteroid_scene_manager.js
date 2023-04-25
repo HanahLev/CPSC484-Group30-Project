@@ -1,8 +1,8 @@
 function SceneManager(canvas) {
 
     const screenDimensions = {
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: canvas.width,
+        height: canvas.height
     };
     
     const scene = buildScene();
@@ -32,7 +32,7 @@ function SceneManager(canvas) {
     }
 
     function buildRender({ width, height }) {
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); 
+        const renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias: true, alpha: true }); 
 
         renderer.setClearColor("#222222");
         renderer.setSize(width, height);
