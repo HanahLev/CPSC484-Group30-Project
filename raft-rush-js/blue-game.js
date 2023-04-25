@@ -241,10 +241,8 @@ function World() {
         paused = true;
         document.addEventListener("keydown", function (e) {
           if (e.keyCode == 40) {
-
             localStorage.setItem("turnScore", score);
             document.location = "11-blue-attack-results.html";
-            
           }
         });
         var variableContent = document.getElementById("variable-content");
@@ -445,6 +443,25 @@ function Character() {
       }
     }
 
+    //##########################################################################################################//
+    //                                                KINECT                                                    //
+    //##########################################################################################################//
+
+    var host = "cpsc484-03.yale.internal:8888";
+    $(document).ready(function () {
+      frames.start();
+      // twod.start();
+    });
+
+    var cursor_x = 0;
+    var cursor_y = 0;
+
+    // var cursor_x = mouseX;
+    // var cursor_y = mouseY;
+
+    // console.log(`the coordinate values are: ${mouseX}, ${mouseY}`);
+    // console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
+
     // code for connecting the game to the sensor
     var frames = {
       socket: null,
@@ -459,6 +476,7 @@ function Character() {
             JSON.parse(event.data)
           );
           if (command !== null) {
+            console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
             collision_detector(command);
           }
         };
@@ -470,14 +488,15 @@ function Character() {
           return command;
         }
 
-        var left_hand_tip_x = frame.people[0].joints[9].position.x - pelvis_x;
-        var left_hand_tip_y = frame.people[0].joints[9].position.y - pelvis_y;
-        var left_hand_tip_z = frame.people[0].joints[9].position.z - pelvis_z;
+        var left_hand_tip_x = frame.people[0].joints[9].pixel.x;
+        var left_hand_tip_y = frame.people[0].joints[9].pixel.y;
 
         command = [left_hand_tip_x, left_hand_tip_y];
 
-        cursor_x = command[0] * (1920 / 1280);
-        cursor_y = command[1] * (1080 / 720);
+        cursor_x = 1920 - command[0] * (1920 / 1280);
+        cursor_y = command[1] * (1080 / 720) - 250;
+
+        command = [cursor_x, cursor_y];
 
         return command;
       },
@@ -488,14 +507,15 @@ function Character() {
           return command;
         }
 
-        var right_hand_tip_x = frame.people[0].joints[9].position.x;
-        var right_hand_tip_y = frame.people[0].joints[9].position.y;
-        var right_hand_tip_z = frame.people[0].joints[9].position.z;
+        var right_hand_tip_x = frame.people[0].joints[15].pixel.x;
+        var right_hand_tip_y = frame.people[0].joints[15].pixel.y;
 
         command = [right_hand_tip_x, right_hand_tip_y];
 
-        cursor_x = command[0] * (1920 / 1280);
-        cursor_y = command[1] * (1080 / 720);
+        cursor_x = 1920 - command[0] * (1920 / 1280);
+        cursor_y = command[1] * (1080 / 720) - 250;
+
+        command = [cursor_x, cursor_y];
 
         return command;
       },
@@ -548,11 +568,11 @@ function Character() {
         var pelvis_y = frame.people[0].joints[0].position.y;
         var pelvis_z = frame.people[0].joints[0].position.z;
         var right_hand_tip_x =
-          (frame.people[0].joints[9].position.x - pelvis_x) * -1;
+          (frame.people[0].joints[15].position.x - pelvis_x) * -1;
         var right_hand_tip_y =
-          (frame.people[0].joints[9].position.y - pelvis_y) * -1;
+          (frame.people[0].joints[15].position.y - pelvis_y) * -1;
         var right_hand_tip_z =
-          (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+          (frame.people[0].joints[15].position.z - pelvis_z) * -1;
 
         if (right_hand_tip_z < 100) {
           return command;
@@ -574,6 +594,39 @@ function Character() {
         return command;
       },
     };
+
+    // //##########################################################################################################//
+    // //                                                CURSOR DRAW                                               //
+    // //##########################################################################################################//
+
+    var cursorCanvas;
+
+    function setup() {
+      cursorCanvas = createCanvas(1920, 1080);
+      centerCanvas();
+      cursorCanvas.parent("canvas-container");
+      frameRate(15);
+      stroke(255);
+      strokeWeight(10);
+    }
+
+    function centerCanvas() {
+      var x = (windowWidth - width) / 2;
+      var y = (windowHeight - height) / 2;
+      cursorCanvas.position(x, y);
+    }
+
+    function windowResized() {
+      centerCanvas();
+    }
+
+    function draw() {
+      clear();
+      circle(cursor_x, cursor_y, 20);
+      stroke("white");
+      strokeWeight(20);
+      fill("white");
+    }
 
     // If the character is jumping, update the height of the character.
     // Otherwise, the character continues running.

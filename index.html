@@ -6,6 +6,7 @@
   blue 50%,
   blue 100%
 );">
+
   <head>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
@@ -87,7 +88,7 @@
     <!-- footer div for the buttons -->
     <div class="row">
       <h4>Hover over buttons with your right hand for 3 seconds to select</h4>
-      <button data-url="2-team-select.html" style="font-weight: bolder;" onmouseenter="redirect('2-team-select.html')" onmouseleave="cancel_redirect()">START</button>
+      <button id="mainButton" data-url="2-team-select.html" style="font-weight: bolder;" onclick="redirect('2-team-select.html')" onmouseenter="redirect('2-team-select.html')" onmouseleave="cancel_redirect()">START</button>
     </div>
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
