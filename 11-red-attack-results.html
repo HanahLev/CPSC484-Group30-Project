@@ -12,7 +12,7 @@
     <!-- div for the scores -->
     <div>
       <!-- <p>page 11-red-attack-results</p> -->
-      <h2>X Damage dealt to Team Blue!</h2><br>
+      <h2><span id="getScore"></span> Damage dealt to Team Blue!</h2><br>
     </div>
 
     <div>
@@ -78,5 +78,17 @@
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js" type="text/javascript"></script>
+    <script>
+      let score = localStorage.getItem("turnScore");
+      document.getElementById("getScore").innerHTML = score;
+
+      function getTeamScore() {
+        let hi = globa
+        let newTotalScore = localStorage.getItem("blueTotalScore");
+        newTotalScore += score;
+        localStorage.setItem("blueTotalScore", newTotalScore);
+        document.getElementById("blueScore").innerHTML = newTotalScore;
+      }
+    </script>
   </body>
 </html>

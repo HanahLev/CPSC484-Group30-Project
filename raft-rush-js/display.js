@@ -109,22 +109,6 @@ function Character() {
 	/**
 	  * Builds the character in depth-first order. The parts of are 
   	  * modelled by the following object hierarchy:
-	  *
-	  * - character (this.element)
-	  *    - head
-	  *       - face
-	  *       - hair
-	  *    - torso
-	  *    - leftArm
-	  *       - leftLowerArm
-	  *    - rightArm
-	  *       - rightLowerArm
-	  *    - leftLeg
-	  *       - rightLowerLeg
-	  *    - rightLeg
-	  *       - rightLowerLeg
-	  *    - raft
-	  * 	  - raft
 	  * 
 	  */
 	function init() {
@@ -145,14 +129,6 @@ function Character() {
 		self.rightArm = createLimb(30, 140, 40, self.skinColor, 100, 190, -10);
 		self.rightArm.add(self.rightLowerArm);
 
-		// self.leftLowerLeg = createLimb(40, 200, 40, self.skinColor, 0, -200, 0);
-		// self.leftLeg = createLimb(50, 170, 50, self.shortsColor, -50, -10, 30);
-		// self.leftLeg.add(self.leftLowerLeg);
-
-		// self.rightLowerLeg = createLimb(40, 200, 40, self.skinColor, 0, -200, 0);
-		// self.rightLeg = createLimb(50, 170, 50, self.shortsColor, 50, -10, 30);
-		// self.rightLeg.add(self.rightLowerLeg);
-
 		self.raft = createLimb(300, 100, 400, self.raftColor, 0, -200, 0);
 
 		self.element = createGroup(0, 0, -300);
@@ -160,8 +136,6 @@ function Character() {
 		self.element.add(self.torso);
 		self.element.add(self.leftArm);
 		self.element.add(self.rightArm);
-		// self.element.add(self.leftLeg);
-		// self.element.add(self.rightLeg);
 		self.element.add(self.raft);
 
 	}

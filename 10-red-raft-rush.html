@@ -1,0 +1,60 @@
+<!-- Main HTML File for Raft Rush game -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Raft Rush</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="raft-rush-js/three.min.js"></script>
+    <script type="text/javascript" src="raft-rush-js/red-game.js"></script>
+    <link href="raft-rush.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="panel">
+      <div class="game-title">
+        <div class="title">Raft Rush</div>
+      </div>
+      <div class="stat">
+        <label>Score</label>
+        <p id="score">0</p>
+      </div>
+      <table id="controls">
+        <tr>
+          <td>Left:</td>
+          <td>Move Left</td>
+        </tr>
+        <tr>
+          <td>Right:</td>
+          <td>Move Right</td>
+        </tr>
+      </table>
+      <table id="ranks"></table>
+      <button>Start</button>
+      <div class="animate-flicker" id="variable-content">
+        Press start button to begin
+      </div>
+
+      <div class="container">
+        <div id="hand-container" class="hands">
+          <span class="circle">
+            <div id="left-arrow" class="left-arrow">left</div>
+          </span>
+          <span class="circle">
+            <div id="right-arrow" class="right-arrow">right</div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="world"></div>
+
+	<script type="text/javascript">
+		function getScore() {
+      var score = score;
+
+      document.getElementById('text').innerHTML = score;
+		}
+	</script>
+  </body>
+</html>

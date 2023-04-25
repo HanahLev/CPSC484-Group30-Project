@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: blue;">
+<html lang="en" style="background-color: blue">
   <head>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
@@ -8,7 +8,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: blue;" onload="redirect_load('index.html')">
+  <body
+    style="background-color: blue"
+    onload="redirect_load('1-start-screen.html')"
+  >
     <!-- header div -->
     <div>
       <!-- <p>page 3-blue-enter-name</p> -->
@@ -16,26 +19,44 @@
     </div>
 
     <div>
-      <img src="blue-crest.png" alt="Blue Crest" style="height: 100px;">
+      <img src="blue-crest.png" alt="Blue Crest" style="height: 100px" />
     </div>
 
     <div>
       <h2>Who are you?</h2>
       <p>Please enter your name below</p>
-      <input type="text" />
+      <input type="text" id="playerName" />
     </div>
 
     <div class="flex-parent">
       <div>
-        <button data-url="2-team-select.html" onmouseenter="redirect('2-team-select.html')" onmouseleave="cancel_redirect()">Back</button>
+        <button
+          data-url="2-team-select.html"
+          onmouseenter="redirect('2-team-select.html')"
+          onmouseleave="cancel_redirect()"
+        >
+          Back
+        </button>
       </div>
 
       <div>
-        <button data-url="4-blue-welcome.html" onmouseenter="redirect('4-blue-welcome.html')" onmouseleave="cancel_redirect()">Next</button>
+        <button
+          data-url="4-blue-welcome.html"
+          onmouseenter="getName();redirect('4-blue-welcome.html');"
+          onmouseleave="cancel_redirect()"
+        >
+          Next
+        </button>
       </div>
     </div>
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js" type="text/javascript"></script>
+    <script>
+      function getName() {
+        let name = localStorage.getItem("turnScore");
+        document.getElementById("getScore").innerHTML = score;
+      }
+    </script>
   </body>
 </html>
