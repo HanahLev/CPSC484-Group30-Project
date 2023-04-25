@@ -69,5 +69,5 @@ Redirect score values from game to the results pages
 
 #### Jacob Feit Mann – jjf77:
 #### Contribution: 
-Asteroid game
+Researched libraries and strategies for us to employ in the making of the prototype. I helped with my groupmates’ questions. I spent the vast majority of my time (roughly 17 hours) on implementing an asteroid-destroying game, which quite unfortunately was left on the cutting room floor.
 
