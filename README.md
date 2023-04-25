@@ -34,7 +34,9 @@ On the technical side of things, I focussed mainly on the CSS and JS of the over
 #### Harry Shindika – has58:
 ##### Contribution: 
 Raft Rush game
+
 Figuring out how to connect to the server to get live data
+
 Redirect score values from game to the results pages
 
 #### Jacob Feit Mann – jjf77:
