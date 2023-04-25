@@ -12,8 +12,7 @@ function Asteroid(scene, x, y, path) {
 			path, 
 			( function(gltf) {
 				this.model = gltf.scene;
-				console.log(this.model);
-
+				console.log(typeof(this.model));
 				this.model.rotation.x = Math.PI / 2;
 				this.model.rotation.y = -Math.PI / 2;
 
@@ -34,9 +33,15 @@ function Asteroid(scene, x, y, path) {
 	}
 
 	this.getMoving = function() {
-		console.log(typeof(this.model));
-		this.model.translateOnAxis(this.model.worldToLocal(worldOrigin).normalize(), distance);
+		// console.log(typeof(this.model));
+		if (typeof(this.model) !== "undefined") {
+			this.model.translateOnAxis(this.model.worldToLocal(worldOrigin).normalize(), distance);
+			console.log("SUCCESS");
+		}
+		else
+		{
+			console.log("FAILURE");
+		}
 		requestAnimationFrame(this.getMoving);
 	}
-
 }
