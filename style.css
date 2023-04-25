@@ -210,3 +210,7 @@ canvas {
 .active-down {
   border-top: 15px solid #64675b;
 }
+
+.canvas {
+  border-color: #000000;
+}

@@ -1,5 +1,5 @@
 //##########################################################################################################//
-//                                                KINTECT                                                   //
+//                                                KINECT                                                    //
 //##########################################################################################################//
 
 var host = "cpsc484-03.yale.internal:8888";
@@ -8,8 +8,13 @@ $(document).ready(function() {
   // twod.start();
 });
 
-var cursor_x = 0;
-var cursor_y = 0;
+// var cursor_x = 0;
+// var cursor_y = 0;
+
+var cursor_x = mouseX;
+var cursor_y = mouseY;
+
+console.log(`the coordinate values are: ${mouseX}, ${mouseY}`);
 
 var frames = {
   socket: null,
@@ -144,11 +149,19 @@ function setup() {
   strokeWeight(10);
 }
 
+// function draw() {
+//   circle(cursor_x, cursor_y, 20);
+//   stroke('white');
+//   strokeWeight(20);
+//   fill('white');
+// }
+
+// Move the mouse across the quadrants
+// to see the cursor change
 function draw() {
-  circle(cursor_x, cursor_y, 20);
-  stroke('white');
-  strokeWeight(20);
-  fill('white');
+  // line(width / 2, 0, width / 2, height);
+  // line(0, height / 2, width, height / 2);
+  cursor('progress',mouseX,mouseY);
 }
 
 //##########################################################################################################//

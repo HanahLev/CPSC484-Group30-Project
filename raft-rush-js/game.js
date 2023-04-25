@@ -1,11 +1,4 @@
 /**
- *
- * RAFT RUSH
- * ----
- *
- */
-
-/**
  * Constants used in this game.
  */
 var Colors = {
@@ -28,14 +21,6 @@ var deg2Rad = Math.PI / 180;
 window.addEventListener("load", function () {
   new World();
 });
-
-/**
- *
- * THE WORLD
- *
- * The world in which Boxy Run takes place.
- *
- */
 
 /**
  * A class of which the world is an instance. Initializes the game
@@ -124,6 +109,9 @@ function World() {
     // The game is paused to begin with and the game is not over.
     gameOver = false;
     paused = true;
+
+    // start taking input from server
+
 
     // Start receiving feedback from the player.
     var left = 37;
@@ -263,70 +251,11 @@ function World() {
         variableContent.style.visibility = "visible";
         variableContent.innerHTML =
           "Game over! Press the down arrow to continue.";
-        var table = document.getElementById("ranks");
-        var rankNames = [
-          "Typical Engineer",
-          "Couch Potato",
-          "Weekend Jogger",
-          "Daily Runner",
-          "Local Prospect",
-          "Regional Star",
-          "National Champ",
-          "Second Mo Farah",
-        ];
-        var rankIndex = Math.floor(score / 15000);
 
-        // If applicable, display the next achievable rank.
-        if (score < 124000) {
-          var nextRankRow = table.insertRow(0);
-          nextRankRow.insertCell(0).innerHTML =
-            rankIndex <= 5
-              ? "".concat((rankIndex + 1) * 15, "k-", (rankIndex + 2) * 15, "k")
-              : rankIndex == 6
-              ? "105k-124k"
-              : "124k+";
-          nextRankRow.insertCell(1).innerHTML =
-            "*Score within this range to earn the next rank*";
-        }
-
-        // Display the achieved rank.
-        var achievedRankRow = table.insertRow(0);
-        achievedRankRow.insertCell(0).innerHTML =
-          rankIndex <= 6
-            ? "".concat(rankIndex * 15, "k-", (rankIndex + 1) * 15, "k").bold()
-            : score < 124000
-            ? "105k-124k".bold()
-            : "124k+".bold();
-        achievedRankRow.insertCell(1).innerHTML =
-          rankIndex <= 6
-            ? "Congrats! You're a ".concat(rankNames[rankIndex], "!").bold()
-            : score < 124000
-            ? "Congrats! You're a ".concat(rankNames[7], "!").bold()
-            : "Congrats! You exceeded the creator's high score of 123790 and beat the game!".bold();
-
-        // Display all ranks lower than the achieved rank.
-        if (score >= 120000) {
-          rankIndex = 7;
-        }
-        for (var i = 0; i < rankIndex; i++) {
-          var row = table.insertRow(i);
-          row.insertCell(0).innerHTML = "".concat(
-            i * 15,
-            "k-",
-            (i + 1) * 15,
-            "k"
-          );
-          row.insertCell(1).innerHTML = rankNames[i];
-        }
-        if (score > 124000) {
-          var row = table.insertRow(7);
-          row.insertCell(0).innerHTML = "105k-124k";
-          row.insertCell(1).innerHTML = rankNames[7];
-        }
       }
 
       // Update the scores.
-      score += 10;
+      score += 1;
       document.getElementById("score").innerHTML = score;
     }
 
@@ -531,6 +460,129 @@ function Character() {
           break;
       }
     }
+
+    // code for connecting the game to the sensor
+    var frames = {
+      socket: null,
+    
+      start: function() {
+        var url = "ws://" + host + "/frames";
+        // var url = "ws://" + host + "/depth";      
+        // var url = "ws://" + host + "/twod";
+        frames.socket = new WebSocket(url);
+        frames.socket.onmessage = function (event) {
+          var command = frames.get_right_hand_tip_coordinates(JSON.parse(event.data));
+          if (command !== null) {
+            collision_detector(command);
+          }
+        }
+      },
+      
+      get_left_hand_tip_coordinates: function (frame) {
+        var command = null;
+        if (frame.people.length < 1) {
+          return command;
+        }
+    
+        var left_hand_tip_x = frame.people[0].joints[9].position.x - pelvis_x;
+        var left_hand_tip_y = frame.people[0].joints[9].position.y - pelvis_y;
+        var left_hand_tip_z = frame.people[0].joints[9].position.z - pelvis_z;
+    
+        command = [left_hand_tip_x, left_hand_tip_y]
+    
+        cursor_x = command[0] * (1920/1280)
+        cursor_y = command[1] * (1080/720)
+    
+        return command
+      },
+    
+      get_right_hand_tip_coordinates: function (frame) {
+        var command = null;
+        if (frame.people.length < 1) {
+          return command;
+        }
+    
+        var right_hand_tip_x = frame.people[0].joints[9].position.x;
+        var right_hand_tip_y = frame.people[0].joints[9].position.y;
+        var right_hand_tip_z = frame.people[0].joints[9].position.z;
+    
+        command = [right_hand_tip_x, right_hand_tip_y]
+    
+        cursor_x = command[0] * (1920/1280)
+        cursor_y = command[1] * (1080/720)
+    
+        return command
+      },
+    
+      left_hand_tip_relative: function (frame) {
+        var command = null;
+        if (frame.people.length < 1) {
+          return command;
+        }
+    
+        // Normalize by subtracting the root (pelvis) joint coordinates
+        var pelvis_x = frame.people[0].joints[0].position.x;
+        var pelvis_y = frame.people[0].joints[0].position.y;
+        var pelvis_z = frame.people[0].joints[0].position.z;
+        var left_hand_tip_x = (frame.people[0].joints[9].position.x - pelvis_x) * -1;
+        var left_hand_tip_y = (frame.people[0].joints[9].position.y - pelvis_y) * -1;
+        var left_hand_tip_z = (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+    
+        if (left_hand_tip_z < 100) {
+          return command;
+        }
+    
+        if (left_hand_tip_x < 200 && left_hand_tip_x > -200) {
+          if (left_hand_tip_y > 500) {
+            command = 73; // UP
+          } else if (left_hand_tip_y < 100) {
+            command = 75; // DOWN
+          }
+        } else if (left_hand_tip_y < 500 && left_hand_tip_y > 100) {
+          if (left_hand_tip_x > 200) {
+            command = 76; // RIGHT
+          } else if (left_hand_tip_x < -200) {
+            command = 74; // LEFT
+          }
+        }
+        return command;
+      },
+    
+      right_hand_tip_relative: function (frame) {
+        var command = null;
+        if (frame.people.length < 1) {
+          return command;
+        }
+    
+        // Normalize by subtracting the root (pelvis) joint coordinates
+        var pelvis_x = frame.people[0].joints[0].position.x;
+        var pelvis_y = frame.people[0].joints[0].position.y;
+        var pelvis_z = frame.people[0].joints[0].position.z;
+        var right_hand_tip_x = (frame.people[0].joints[9].position.x - pelvis_x) * -1;
+        var right_hand_tip_y = (frame.people[0].joints[9].position.y - pelvis_y) * -1;
+        var right_hand_tip_z = (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+    
+        if (right_hand_tip_z < 100) {
+          return command;
+        }
+    
+        if (right_hand_tip_x < 200 && right_hand_tip_x > -200) {
+          if (right_hand_tip_y > 500) {
+            command = 73; // UP
+          } else if (right_hand_tip_y < 100) {
+            command = 75; // DOWN
+          }
+        } else if (right_hand_tip_y < 500 && right_hand_tip_y > 100) {
+          if (right_hand_tip_x > 200) {
+            command = 76; // RIGHT
+          } else if (right_hand_tip_x < -200) {
+            command = 74; // LEFT
+          }
+        }
+        return command;
+      }
+    };
+
 
     // If the character is jumping, update the height of the character.
     // Otherwise, the character continues running.

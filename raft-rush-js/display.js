@@ -1,15 +1,3 @@
-
-/**
- *
- * RAFT RUSH
- * ----
- * Character demonstration, created with love by Walvin An
- *
- * Boilerplate for character, scene, camera, renderer, lights taken from
- * https://codepen.io/dalhundal/pen/pJdLjL
- *
- */
-
 /**
  * Constants used in this game.
  */
@@ -212,15 +200,7 @@ function Character() {
 		self.rightArm.rotation.x = sinusoid(self.stepFreq, -70, 50, 0) * deg2Rad;
 		self.leftLowerArm.rotation.x = sinusoid(self.stepFreq, 70, 140, 180) * deg2Rad;
 		self.rightLowerArm.rotation.x = sinusoid(self.stepFreq, 70, 140, 0) * deg2Rad;
-		// self.leftLeg.rotation.x = sinusoid(self.stepFreq, -20, 80, 0) * deg2Rad;
-		// self.rightLeg.rotation.x = sinusoid(self.stepFreq, -20, 80, 180) * deg2Rad;
-		// self.leftLowerLeg.rotation.x = sinusoid(self.stepFreq, -130, 5, 240) * deg2Rad;
-		// self.rightLowerLeg.rotation.x = sinusoid(self.stepFreq, -130, 5, 60) * deg2Rad;
-
-		// self.raft.rotation.x = sinusoid(2 * self.stepFreq, -130, 5, 60) * deg2Rad;
-
 	}
-
 }
 
 /** 
