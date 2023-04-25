@@ -46,7 +46,7 @@ var frames = {
     command = [left_hand_tip_x, left_hand_tip_y]
 
     cursor_x = 1920 - (command[0] * (1920/1280))
-    cursor_y = (command[1] * (1080/720)) - 500
+    cursor_y = (command[1] * (1080/720)) - 250
 
     command = [cursor_x, cursor_y]
 
@@ -65,7 +65,7 @@ var frames = {
     command = [right_hand_tip_x, right_hand_tip_y]
 
     cursor_x = 1920 - (command[0] * (1920/1280))
-    cursor_y = (command[1] * (1080/720)) - 500
+    cursor_y = (command[1] * (1080/720)) - 250
 
     command = [cursor_x, cursor_y]
 
