@@ -7,6 +7,8 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   color: white;
+  width: 1920;
+  height: 1080;
 }
 
 .column-2 {
@@ -122,6 +124,7 @@ canvas {
   z-index: 100;
   width:1920;
   height:1080;
+  justify-content: center;
 }
 
 #kinect-window {

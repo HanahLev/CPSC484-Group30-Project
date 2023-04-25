@@ -15,7 +15,7 @@ var cursor_y = 0;
 // var cursor_y = mouseY;
 
 // console.log(`the coordinate values are: ${mouseX}, ${mouseY}`);
-console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
+// console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
 
 var frames = {
   socket: null,
@@ -28,6 +28,7 @@ var frames = {
     frames.socket.onmessage = function (event) {
       var command = frames.get_right_hand_tip_coordinates(JSON.parse(event.data));
       if (command !== null) {
+        console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
         collision_detector(command);
       }
     }
@@ -39,9 +40,8 @@ var frames = {
       return command;
     }
 
-    var left_hand_tip_x = frame.people[0].joints[9].position.x - pelvis_x;
-    var left_hand_tip_y = frame.people[0].joints[9].position.y - pelvis_y;
-    var left_hand_tip_z = frame.people[0].joints[9].position.z - pelvis_z;
+    var left_hand_tip_x = frame.people[0].joints[9].pixel.x;
+    var left_hand_tip_y = frame.people[0].joints[9].pixel.y;
 
     command = [left_hand_tip_x, left_hand_tip_y]
 
@@ -57,9 +57,8 @@ var frames = {
       return command;
     }
 
-    var right_hand_tip_x = frame.people[0].joints[9].position.x;
-    var right_hand_tip_y = frame.people[0].joints[9].position.y;
-    var right_hand_tip_z = frame.people[0].joints[9].position.z;
+    var right_hand_tip_x = frame.people[0].joints[9].pixel.x;
+    var right_hand_tip_y = frame.people[0].joints[9].pixel.y;
 
     command = [right_hand_tip_x, right_hand_tip_y]
 
@@ -142,29 +141,43 @@ var frames = {
 // //                                                CURSOR DRAW                                               //
 // //##########################################################################################################//
 
+var cursorCanvas;
+
 function setup() {
-  let cursorCanvas = createCanvas(windowWidth/2, windowHeight/2);
+  cursorCanvas = createCanvas(1920, 1080);
+  centerCanvas();
   cursorCanvas.parent("canvas-container");
-  frameRate(3);
+  frameRate(20);
   stroke(255);
   strokeWeight(10);
 }
 
-// function draw() {
-//   circle(cursor_x, cursor_y, 20);
-//   stroke('white');
-//   strokeWeight(20);
-//   fill('white');
-// }
-
-// Move the mouse across the quadrants
-// to see the cursor change
-function draw() {
-  // line(width / 2, 0, width / 2, height);
-  // line(0, height / 2, width, height / 2);
-  // cursor('progress', mouseX, mouseY);
-  cursor('progress', cursor_x, cursor_y);
+function centerCanvas() {
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cursorCanvas.position(x, y);
 }
+
+function windowResized() {
+  centerCanvas();
+}
+
+function draw() {
+  clear();
+  circle(cursor_x, cursor_y, 20);
+  stroke('white');
+  strokeWeight(20);
+  fill('white');
+}
+
+// // Move the mouse across the quadrants
+// // to see the cursor change
+// function draw() {
+//   // line(width / 2, 0, width / 2, height);
+//   // line(0, height / 2, width, height / 2);
+//   // cursor('progress', mouseX, mouseY);
+//   cursor('progress', cursor_x, cursor_y);
+// }
 
 //##########################################################################################################//
 //                                               CURSOR EVENTS                                              //
