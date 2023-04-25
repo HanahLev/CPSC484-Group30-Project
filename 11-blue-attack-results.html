@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: blue;">
+<html lang="en" style="background-color: blue">
   <head>
     <link rel="stylesheet" href="style.css" />
     <title>HCI Project Group30</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" src="raft-rush-js/blue-game.js"></script>
   </head>
-  <body style="background-color: blue;" onload="redirect_load('1-start-screen.html')">
+  <body
+    style="background-color: blue"
+    onload="redirect_load('1-start-screen.html');getTeamScore();"
+  >
     <!-- div for the scores -->
     <div>
       <!-- <p>page 11-blue-attack-results</p> -->
-      <h2>X Damage dealt to Team Red!</h2><br>
+      <h2><span id="getScore"></span> Damage dealt to Team Red!</h2>
+      <br />
     </div>
 
     <div>
       <h3>Want to save your score?</h3>
-      <h4>Take a picture of this screen and fill out the form from the QR code below</h4>
-      <img src="Form-QR-Code.png" alt="Form-QR-Code" style="height: 100px;">
+      <h4>
+        Take a picture of this screen and fill out the form from the QR code
+        below
+      </h4>
+      <img src="Form-QR-Code.png" alt="Form-QR-Code" style="height: 100px" />
     </div>
 
     <!-- general information div -->
@@ -42,7 +50,7 @@
         </div>
         <div class="column-6">
           <h2></h2>
-        </div>      
+        </div>
       </div>
 
       <!-- div for player -->
@@ -64,17 +72,33 @@
         </div>
         <div class="column-6">
           <h2></h2>
-        </div>      
+        </div>
       </div>
     </div>
 
     <div>
-      <button data-url="1-start-screen.html" onmouseenter="redirect('1-start-screen.html')" onmouseleave="cancel_redirect()">
+      <button
+        data-url="1-start-screen.html"
+        onmouseenter="redirect('1-start-screen.html')"
+        onmouseleave="cancel_redirect()"
+      >
         Continue to next player
       </button>
     </div>
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js" type="text/javascript"></script>
+    <script>
+      let score = localStorage.getItem("turnScore");
+      document.getElementById("getScore").innerHTML = score;
+
+      function getTeamScore() {
+        let hi = globa
+        let newTotalScore = localStorage.getItem("blueTotalScore");
+        newTotalScore += score;
+        localStorage.setItem("blueTotalScore", newTotalScore);
+        document.getElementById("blueScore").innerHTML = newTotalScore;
+      }
+    </script>
   </body>
 </html>

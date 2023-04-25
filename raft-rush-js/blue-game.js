@@ -48,6 +48,7 @@ function World() {
     fogDistance,
     gameOver;
 
+  var sentScore = score;
   // Initialize the world.
   init();
 
@@ -111,7 +112,6 @@ function World() {
     paused = true;
 
     // start taking input from server
-
 
     // Start receiving feedback from the player.
     var left = 37;
@@ -240,18 +240,17 @@ function World() {
         gameOver = true;
         paused = true;
         document.addEventListener("keydown", function (e) {
-          // if (e.keyCode == 40) document.location.reload(true);
           if (e.keyCode == 40) {
- 
-            document.location='11-blue-attack-results.html'
-          };
 
+            localStorage.setItem("turnScore", score);
+            document.location = "11-blue-attack-results.html";
+            
+          }
         });
         var variableContent = document.getElementById("variable-content");
         variableContent.style.visibility = "visible";
         variableContent.innerHTML =
           "Game over! Press the down arrow to continue.";
-
       }
 
       // Update the scores.
@@ -353,22 +352,7 @@ function Character() {
   /**
    * Builds the character in depth-first order. The parts of are
    * modelled by the following object hierarchy:
-   *
-   * - character (this.element)
-   *    - head
-   *       - face
-   *       - hair
-   *    - torso
-   *    - leftArm
-   *       - leftLowerArm
-   *    - rightArm
-   *       - rightLowerArm
-   *    - leftLeg
-   *       - rightLowerLeg
-   *    - rightLeg
-   *       - rightLowerLeg
-   *	   - raft
-   *       - raft
+   
    *
    * Also set up the starting values for evolving parameters throughout
    * the game.
@@ -464,74 +448,79 @@ function Character() {
     // code for connecting the game to the sensor
     var frames = {
       socket: null,
-    
-      start: function() {
+
+      start: function () {
         var url = "ws://" + host + "/frames";
-        // var url = "ws://" + host + "/depth";      
+        // var url = "ws://" + host + "/depth";
         // var url = "ws://" + host + "/twod";
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
-          var command = frames.get_right_hand_tip_coordinates(JSON.parse(event.data));
+          var command = frames.get_right_hand_tip_coordinates(
+            JSON.parse(event.data)
+          );
           if (command !== null) {
             collision_detector(command);
           }
-        }
+        };
       },
-      
+
       get_left_hand_tip_coordinates: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
         }
-    
+
         var left_hand_tip_x = frame.people[0].joints[9].position.x - pelvis_x;
         var left_hand_tip_y = frame.people[0].joints[9].position.y - pelvis_y;
         var left_hand_tip_z = frame.people[0].joints[9].position.z - pelvis_z;
-    
-        command = [left_hand_tip_x, left_hand_tip_y]
-    
-        cursor_x = command[0] * (1920/1280)
-        cursor_y = command[1] * (1080/720)
-    
-        return command
+
+        command = [left_hand_tip_x, left_hand_tip_y];
+
+        cursor_x = command[0] * (1920 / 1280);
+        cursor_y = command[1] * (1080 / 720);
+
+        return command;
       },
-    
+
       get_right_hand_tip_coordinates: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
         }
-    
+
         var right_hand_tip_x = frame.people[0].joints[9].position.x;
         var right_hand_tip_y = frame.people[0].joints[9].position.y;
         var right_hand_tip_z = frame.people[0].joints[9].position.z;
-    
-        command = [right_hand_tip_x, right_hand_tip_y]
-    
-        cursor_x = command[0] * (1920/1280)
-        cursor_y = command[1] * (1080/720)
-    
-        return command
+
+        command = [right_hand_tip_x, right_hand_tip_y];
+
+        cursor_x = command[0] * (1920 / 1280);
+        cursor_y = command[1] * (1080 / 720);
+
+        return command;
       },
-    
+
       left_hand_tip_relative: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
         }
-    
+
         // Normalize by subtracting the root (pelvis) joint coordinates
         var pelvis_x = frame.people[0].joints[0].position.x;
         var pelvis_y = frame.people[0].joints[0].position.y;
         var pelvis_z = frame.people[0].joints[0].position.z;
-        var left_hand_tip_x = (frame.people[0].joints[9].position.x - pelvis_x) * -1;
-        var left_hand_tip_y = (frame.people[0].joints[9].position.y - pelvis_y) * -1;
-        var left_hand_tip_z = (frame.people[0].joints[9].position.z - pelvis_z) * -1;
-    
+        var left_hand_tip_x =
+          (frame.people[0].joints[9].position.x - pelvis_x) * -1;
+        var left_hand_tip_y =
+          (frame.people[0].joints[9].position.y - pelvis_y) * -1;
+        var left_hand_tip_z =
+          (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+
         if (left_hand_tip_z < 100) {
           return command;
         }
-    
+
         if (left_hand_tip_x < 200 && left_hand_tip_x > -200) {
           if (left_hand_tip_y > 500) {
             command = 73; // UP
@@ -547,25 +536,28 @@ function Character() {
         }
         return command;
       },
-    
+
       right_hand_tip_relative: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
         }
-    
+
         // Normalize by subtracting the root (pelvis) joint coordinates
         var pelvis_x = frame.people[0].joints[0].position.x;
         var pelvis_y = frame.people[0].joints[0].position.y;
         var pelvis_z = frame.people[0].joints[0].position.z;
-        var right_hand_tip_x = (frame.people[0].joints[9].position.x - pelvis_x) * -1;
-        var right_hand_tip_y = (frame.people[0].joints[9].position.y - pelvis_y) * -1;
-        var right_hand_tip_z = (frame.people[0].joints[9].position.z - pelvis_z) * -1;
-    
+        var right_hand_tip_x =
+          (frame.people[0].joints[9].position.x - pelvis_x) * -1;
+        var right_hand_tip_y =
+          (frame.people[0].joints[9].position.y - pelvis_y) * -1;
+        var right_hand_tip_z =
+          (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+
         if (right_hand_tip_z < 100) {
           return command;
         }
-    
+
         if (right_hand_tip_x < 200 && right_hand_tip_x > -200) {
           if (right_hand_tip_y > 500) {
             command = 73; // UP
@@ -580,9 +572,8 @@ function Character() {
           }
         }
         return command;
-      }
+      },
     };
-
 
     // If the character is jumping, update the height of the character.
     // Otherwise, the character continues running.

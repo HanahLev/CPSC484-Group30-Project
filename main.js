@@ -222,3 +222,13 @@ function cancel_redirect() {
   clearTimeout(timeout_var);
 }
 
+
+//##########################################################################################################//
+//                                               GAME MECHANICS                                             //
+//##########################################################################################################//
+
+var redTotalScore = 0;
+var blueTotalScore = 0;
+localStorage.setItem("redTotalScore", redTotalScore);
+localStorage.setItem("blueTotalScore", blueTotalScore);
+
