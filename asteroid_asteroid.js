@@ -1,3 +1,5 @@
+distance = 50;
+worldOrigin = new THREE.Vector3(0, 0, 0);
 function Asteroid(scene, x, y, path) {
 	
 	var modelLoader = new THREE.GLTFLoader();
@@ -22,10 +24,19 @@ function Asteroid(scene, x, y, path) {
 				this.bbox = new THREE.Box3().setFromObject(this.model);
 
 				scene.add(this.model);
+				this.getMoving();
+				return this;
+
 			}).bind(this)
 		)
-
 	this.destroy = function() {
 		scene.remove(this.model);
 	}
+
+	this.getMoving = function() {
+		console.log(typeof(this.model));
+		this.model.translateOnAxis(this.model.worldToLocal(worldOrigin).normalize(), distance);
+		requestAnimationFrame(this.getMoving);
+	}
+
 }

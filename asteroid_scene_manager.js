@@ -66,7 +66,7 @@ function SceneManager(canvas) {
                 // Stop the interval
                 clearInterval(intervalId);
             }
-        }, 700); // 2000 milliseconds = 2 seconds
+        }, 1500); // 2000 milliseconds = 2 seconds
 
         dynamicSubjects.push()
     }

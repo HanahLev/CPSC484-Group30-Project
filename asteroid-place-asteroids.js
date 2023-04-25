@@ -16,7 +16,7 @@ function placeAsteroids(scene) {
 	const randomNumber = Math.floor(Math.random() * 10);
 	const myFilePath = filePaths[randomNumber];
 
-	new Asteroid(scene, getRandomPositions().x, getRandomPositions().y, myFilePath);
+	let currAsteroid = new Asteroid(scene, getRandomPositions().x, getRandomPositions().y, myFilePath);
 
 	// [...Array(5).keys()].map(y => {
 
