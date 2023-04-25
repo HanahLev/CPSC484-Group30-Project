@@ -8,13 +8,14 @@ $(document).ready(function() {
   // twod.start();
 });
 
-// var cursor_x = 0;
-// var cursor_y = 0;
+var cursor_x = 0;
+var cursor_y = 0;
 
-var cursor_x = mouseX;
-var cursor_y = mouseY;
+// var cursor_x = mouseX;
+// var cursor_y = mouseY;
 
-console.log(`the coordinate values are: ${mouseX}, ${mouseY}`);
+// console.log(`the coordinate values are: ${mouseX}, ${mouseY}`);
+console.log(`the coordinate values are: ${cursor_x}, ${cursor_y}`);
 
 var frames = {
   socket: null,
@@ -161,7 +162,8 @@ function setup() {
 function draw() {
   // line(width / 2, 0, width / 2, height);
   // line(0, height / 2, width, height / 2);
-  cursor('progress',mouseX,mouseY);
+  // cursor('progress', mouseX, mouseY);
+  cursor('progress', cursor_x, cursor_y);
 }
 
 //##########################################################################################################//
