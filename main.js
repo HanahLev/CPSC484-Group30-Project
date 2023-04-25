@@ -8,6 +8,16 @@ $(document).ready(function () {
   // twod.start();
 });
 
+
+function avg(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+      sum += array[i];
+  }
+  return sum / array.length
+}
+
+
 var cursor_x = 0;
 var cursor_y = 0;
 
@@ -59,6 +69,16 @@ var frames = {
 
     command = [cursor_x, cursor_y];
 
+    arr.push(command);
+    
+    if (length(arr) > 15 ) {
+      while (length(arr) > 15) {
+        arr.shift()
+      }
+
+      command = avg(arr);
+    }
+
     return command;
   },
 
@@ -76,8 +96,21 @@ var frames = {
     cursor_x = 1920 - command[0] * (1920 / 1280);
     cursor_y = command[1] * (1080 / 720) - 250;
 
+    console.log(`command is : ${command}`);
+
     
     command = [cursor_x, cursor_y];
+
+    arr.push(command);
+
+    if (length(arr) > 15 ) {
+      while (length(arr) > 15) {
+        arr.shift()
+      }
+
+      command = avg(arr);
+    }
+
 
     return command;
   },
@@ -116,6 +149,16 @@ var frames = {
         command = 74; // LEFT
       }
     }
+
+    arr.push(command);
+    
+    if (length(arr) > 15 ) {
+      while (length(arr) > 15) {
+        arr.shift()
+      }
+
+      command = avg(arr);
+    }
     return command;
   },
 
@@ -152,6 +195,16 @@ var frames = {
       } else if (right_hand_tip_x < -200) {
         command = 74; // LEFT
       }
+    }
+
+    arr.push(command);
+    
+    if (length(arr) > 15 ) {
+      while (length(arr) > 15) {
+        arr.shift()
+      }
+
+      command = avg(arr);
     }
     return command;
   },
