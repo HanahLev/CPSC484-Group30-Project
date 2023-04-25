@@ -48,6 +48,8 @@ var frames = {
     cursor_x = 1920 - (command[0] * (1920/1280))
     cursor_y = (command[1] * (1080/720))
 
+    command = [cursor_x, cursor_y]
+
     return command
   },
 
@@ -64,6 +66,8 @@ var frames = {
 
     cursor_x = 1920 - (command[0] * (1920/1280))
     cursor_y = (command[1] * (1080/720))
+
+    command = [cursor_x, cursor_y]
 
     return command
   },
