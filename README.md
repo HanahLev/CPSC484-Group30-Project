@@ -3,7 +3,9 @@ Semester-long project for HCI course - Group 30
 
 ## Group Members and NetIDs:
 Hanah Leventhal – hal38
+
 Harry Shindika – has58
+
 Jacob Feit Mann – jjf77
 
 ## GitHub Repo Link
@@ -18,7 +20,7 @@ https://github.com/HanahLev/CPSC484-Group30-Project
 - In the header under the stylesheet tag, add a script with the following source
     - https://code.jquery.com/jquery-3.6.0.min.js
 #### Three.js
-No installation required as long as three.min.js file is present
+- No installation required as long as three.min.js file is present
 
 
 ## Collaboration Record
