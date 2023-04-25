@@ -44,7 +44,7 @@ function SceneManager(canvas) {
 
         const nearPlane = 1;
         const farPlane = 1000; 
-        const camera = new THREE.PerspectiveCamera(-width/2, width/2, height/2, -height/2, nearPlane, farPlane);
+        const camera = new THREE.PerspectiveCamera();
                 
         camera.position.z = 10;
 
@@ -52,7 +52,7 @@ function SceneManager(canvas) {
     }
 
     function createSceneSubjects() {
-        // theBackground = new Background(scene);
+        theBackground = new Background(scene);
         theAsteroids = placeAsteroids(scene);
     }
 
