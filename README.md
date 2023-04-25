@@ -8,6 +8,34 @@ Harry Shindika – has58
 
 Jacob Feit Mann – jjf77
 
+## Tasks
+
+#### A textual description of the system: 
+
+The system is a video game consisting of two teams that allows Yale students to compete with each other. Each player will choose between the red or blue team, and a turn-based game begins, with each side playing offense and defense to try and win the game after several rounds. Each user will play an offensive and defensive move, scoring points for their team in the offensive game and protecting themselves in the defensive games. Each mini game should require the user to move around to accomplish the goals of the game.
+
+#### The two tasks that the system addresses: 
+
+- Interaction with Yale peers
+    - The game allows Yale students to interact with other Yale students when they compete with each other on opposite teams or in the same team. Players can play with their friends, and even strangers if they run into each other
+- Taking a break (without the pressure of planning one)
+    - Players can take two minutes on their route, even on a whim to play. The interactive game also allows students to have fun and release stress
+- Get up and move around
+    - The main actions in the game require the players to complete “attacks” which require the player to move, jump, dodge, etc.
+
+#### Key implementation components:
+
+- Tracking hand movement
+    - Involves user movement
+- Calculating team scores across different users
+    - Allows users to connect with one another and ‘compete’
+- Mini Games for different user actions (attacking/defending)
+    - More involved user movement
+    - Gamification stimulates fun
+- Fun UI to engage the user
+    - Interesting UI makes user’s experience whimsical
+
+
 ## GitHub Repo Link
 https://github.com/HanahLev/CPSC484-Group30-Project
 
