@@ -57,8 +57,8 @@ var frames = {
       return command;
     }
 
-    var right_hand_tip_x = frame.people[0].joints[9].pixel.x;
-    var right_hand_tip_y = frame.people[0].joints[9].pixel.y;
+    var right_hand_tip_x = frame.people[0].joints[15].pixel.x;
+    var right_hand_tip_y = frame.people[0].joints[15].pixel.y;
 
     command = [right_hand_tip_x, right_hand_tip_y]
 
@@ -112,9 +112,9 @@ var frames = {
     var pelvis_x = frame.people[0].joints[0].position.x;
     var pelvis_y = frame.people[0].joints[0].position.y;
     var pelvis_z = frame.people[0].joints[0].position.z;
-    var right_hand_tip_x = (frame.people[0].joints[9].position.x - pelvis_x) * -1;
-    var right_hand_tip_y = (frame.people[0].joints[9].position.y - pelvis_y) * -1;
-    var right_hand_tip_z = (frame.people[0].joints[9].position.z - pelvis_z) * -1;
+    var right_hand_tip_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
+    var right_hand_tip_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
+    var right_hand_tip_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
 
     if (right_hand_tip_z < 100) {
       return command;
@@ -147,7 +147,7 @@ function setup() {
   cursorCanvas = createCanvas(1920, 1080);
   centerCanvas();
   cursorCanvas.parent("canvas-container");
-  frameRate(20);
+  frameRate(15);
   stroke(255);
   strokeWeight(10);
 }
