@@ -9,7 +9,6 @@ function Background(scene, height) {
 
 	bg.rotation.z = -Math.PI / 2;
 	bg.position.z = -900;
-	bg.position.y = 1000;
 
 	scene.add(bg)
 }

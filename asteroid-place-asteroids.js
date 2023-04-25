@@ -1,6 +1,6 @@
 function placeAsteroids(scene) {
 
-	const theAsteroids = [];
+	// const theAsteroids = [];
 
 	// asteroid model files into array
 
@@ -12,35 +12,30 @@ function placeAsteroids(scene) {
 		filePaths[index] = directoryPath + filePaths[index];
 	}
 
-	[...Array(5).keys()].map(y => {
+	// get random number to get random asteroid from the asteroid directory
+	const randomNumber = Math.floor(Math.random() * 10);
+	const myFilePath = filePaths[randomNumber];
 
-		getRandomPositions().map(x => { 
-			// get random number to get random asteroid from the asteroid directory
-			const randomNumber = Math.floor(Math.random() * 10);
-			const myFilePath = filePaths[randomNumber];
+	new Asteroid(scene, getRandomPositions().x, getRandomPositions().y, myFilePath);
 
-			const e = new Asteroid(scene, 200*(x-4), 400*(y+1), myFilePath);
-			theAsteroids.push(e);
-		});
-	});
+	// [...Array(5).keys()].map(y => {
 
-	return theAsteroids;
+	// 	getRandomPositions().map(x => { 
+	// 		// get random number to get random asteroid from the asteroid directory
+	// 		const randomNumber = Math.floor(Math.random() * 10);
+	// 		const myFilePath = filePaths[randomNumber];
+
+	// 		const e = new Asteroid(scene, 200*(x-4), 400*(y+1), myFilePath);
+	// 		theAsteroids.push(e);
+	// 	});
+	// });
+
+
+	// return theAsteroids;
 	
 	function getRandomPositions() {
 
-		var noAsteroids = Math.floor((Math.random() * 4));	
-		
-		var arr = [...Array(9).keys()];
-
-		for (let i = arr.length - 1; i > 0; i--) {
-		    
-		    const j = Math.floor(Math.random() * i);
-		    const temp = arr[i];
-		    arr[i] = arr[j];
-		    arr[j] = temp;
-		}
-
-		return arr.slice(0, noAsteroids);
+		return {x: Math.random() * 160 - 80, y: Math.random() * 160 - 80}
     }
 
 

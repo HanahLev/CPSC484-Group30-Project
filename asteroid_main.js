@@ -15,8 +15,8 @@ function bindEventListeners() {
 	window.onresize = resizeCanvas;
 	resizeCanvas();	
 
-	window.onkeydown = handleKeyDown;
-	window.onkeyup = handleKeyUp;
+	// window.onkeydown = handleKeyDown;
+	// window.onkeyup = handleKeyUp;
 }
 
 function resizeCanvas() {
@@ -29,15 +29,15 @@ function resizeCanvas() {
     sceneManager.onWindowResize();
 }
 
-function handleKeyDown(event) {
-	var keyCode = event.which;
-	sceneManager.handleInput(keyCode, true);
-}
+// function handleKeyDown(event) {
+// 	var keyCode = event.which;
+// 	sceneManager.handleInput(keyCode, true);
+// }
 
-function handleKeyUp(event) {
-	var keyCode = event.which;
-	sceneManager.handleInput(keyCode, false);
-}
+// function handleKeyUp(event) {
+// 	var keyCode = event.which;
+// 	sceneManager.handleInput(keyCode, false);
+// }
 
 
 function render() {

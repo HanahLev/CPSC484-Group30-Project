@@ -15,8 +15,9 @@ function Asteroid(scene, x, y, path) {
 				this.model.rotation.x = Math.PI / 2;
 				this.model.rotation.y = -Math.PI / 2;
 
-				this.model.position.set(x, y, -100);
-				this.model.scale.set(0.2,0.2,0.2);
+				this.model.position.set(x, y, -200);
+				// this.model.scale.set(0.2,0.2,0.2);
+				// this.model.scale.set(100, 100, 100);
 				this.model.updateMatrixWorld(true);
 				this.bbox = new THREE.Box3().setFromObject(this.model);
 

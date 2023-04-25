@@ -9,7 +9,7 @@ function SceneManager(canvas) {
     const renderer = buildRender(screenDimensions);
     const camera = buildCamera(screenDimensions);
 
-    var theAsteroids;
+    var theAsteroids, theBackground;
 
     var ambientLight = new THREE.AmbientLight('#ffffff', 1.5);
     scene.add(ambientLight);
@@ -53,13 +53,28 @@ function SceneManager(canvas) {
 
     function createSceneSubjects() {
         theBackground = new Background(scene);
-        theAsteroids = placeAsteroids(scene);
+        
+        // Initialize a variable to store the interval ID
+        let intervalId = null;
+
+        // Start the interval
+        intervalId = setInterval(function() {
+            placeAsteroids(scene);
+
+            // Check if condition is met
+            if (gameEnded) {
+                // Stop the interval
+                clearInterval(intervalId);
+            }
+        }, 700); // 2000 milliseconds = 2 seconds
+
+        dynamicSubjects.push()
     }
 
 
     this.update = function() {
-        if (camera.position.y < 2000 && health > 0) {
-            camera.position.y += 1;
+        if ( health > 0) {
+            // camera.position.y += 1;
 
             for(let i=0; i<dynamicSubjects.length; i++)
                 dynamicSubjects[i].update();            
