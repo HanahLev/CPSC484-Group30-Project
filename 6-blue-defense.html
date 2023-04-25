@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <!-- CDN Link to Three.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
+    <!-- CDN Link to GLTFLoader -->
+		<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- scripts -->
+    <script type="module" src="asteroid_main.js"></script>
+    <script src="asteroid_scene_manager.js"></script>
+    <script type="module" src="asteroid_asteroid.js"></script>
     <!-- header div -->
     <div>
       <p>page 6-blue-defense</p>
@@ -27,7 +35,7 @@
     <script>
         function redirect () {
            setTimeout(myURL, 3000);
-           var result = document.getElementById("result");
+           let result = document.getElementById("result");
            result.innerHTML = "<b> The page will redirect after delay of 3 seconds";
         }
   
