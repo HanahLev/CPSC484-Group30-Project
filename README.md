@@ -50,6 +50,8 @@ https://github.com/HanahLev/CPSC484-Group30-Project
 #### Three.js
 - No installation required as long as three.min.js file is present
 
+## Constraints
+The user must be close to the monitor, and they should try to be the only ones within the Kinect's field of vision.
 
 ## Collaboration Record
 
