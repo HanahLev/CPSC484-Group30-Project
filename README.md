@@ -1,12 +1,14 @@
 # CPSC484-Group30-Project
 Semester-long project for HCI course - Group 30
 
+
 ## Group Members and NetIDs:
 Hanah Leventhal – hal38
 
 Harry Shindika – has58
 
 Jacob Feit Mann – jjf77
+
 
 ## System & Tasks
 
@@ -49,6 +51,10 @@ https://github.com/HanahLev/CPSC484-Group30-Project
     - https://code.jquery.com/jquery-3.6.0.min.js
 #### Three.js
 - No installation required as long as three.min.js file is present
+
+
+## Constraints
+The user must be close to the monitor, and they should try to be the only ones within the Kinect's field of vision.
 
 
 ## Collaboration Record
