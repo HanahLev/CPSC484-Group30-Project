@@ -8,7 +8,7 @@
       rel="stylesheet"
     />
     <script type="text/javascript" src="raft-rush-js/three.min.js"></script>
-    <script type="text/javascript" src="raft-rush-js/blue-game.js"></script>
+    <script type="text/javascript" src="raft-rush-js/red-game.js"></script>
     <link href="raft-rush.css" rel="stylesheet" />
   </head>
   <body>
@@ -33,7 +33,7 @@
       <table id="ranks"></table>
       <button>Start</button>
       <div class="animate-flicker" id="variable-content">
-        Press start button to begin
+        Hover over start button to begin
       </div>
 
       <div class="container">
@@ -51,7 +51,9 @@
 
 	<script type="text/javascript">
 		function getScore() {
+      var score = score;
 
+      document.getElementById('text').innerHTML = score;
 		}
 	</script>
   </body>

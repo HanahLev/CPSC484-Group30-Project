@@ -17,13 +17,15 @@
 
     <!-- general information div -->
     <div>
-      <img src="/Users/harry-shindika/Desktop/CPSC 484/CPSC484-Group30-Project/raft-rush.png" width="500px"/>
+      <img src="raft-rush.png" width="500px"/>
       <p>Raft Rush is a simple game where you travel down a stream and mist  dodge logs to score points.<br/>The more logs you dodge the more damage you deal to your opponents.</p>
+      <p>Move your right hand to the left or to the right to move the character.</p>
     </div>
 
     <div>
       <p>Hover to select</p>
-      <button onclick="document.location='10-blue-raft-rush.html'">
+      <button data-url="10-blue-raft-rush.html" style="font-weight: bolder;" onclick="redirect('10-blue-raft-rush.html')" onmouseenter="redirect('10-blue-raft-rush.html')" onmouseleave="cancel_redirect()">
+      <!-- <button onclick="document.location='10-blue-raft-rush.html'"> -->
         LET'S GO!!
       </button>
     </div>
