@@ -214,34 +214,34 @@ var frames = {
 // //                                                CURSOR DRAW                                               //
 // //##########################################################################################################//
 
-var cursorCanvas;
+// var cursorCanvas;
 
-function setup() {
-  cursorCanvas = createCanvas(1920, 1080);
-  centerCanvas();
-  cursorCanvas.parent("canvas-container");
-  frameRate(15);
-  stroke(255);
-  strokeWeight(10);
-}
+// function setup() {
+//   cursorCanvas = createCanvas(1920, 1080);
+//   centerCanvas();
+//   cursorCanvas.parent("canvas-container");
+//   frameRate(15);
+//   stroke(255);
+//   strokeWeight(10);
+// }
 
-function centerCanvas() {
-  var x = (windowWidth - width) / 2;
-  var y = (windowHeight - height) / 2;
-  cursorCanvas.position(x, y);
-}
+// function centerCanvas() {
+//   var x = (windowWidth - width) / 2;
+//   var y = (windowHeight - height) / 2;
+//   cursorCanvas.position(x, y);
+// }
 
-function windowResized() {
-  centerCanvas();
-}
+// function windowResized() {
+//   centerCanvas();
+// }
 
-function draw() {
-  clear();
-  circle(cursor_x, cursor_y, 20);
-  stroke("white");
-  strokeWeight(20);
-  fill("white");
-}
+// function draw() {
+//   clear();
+//   circle(cursor_x, cursor_y, 20);
+//   stroke("white");
+//   strokeWeight(20);
+//   fill("white");
+// }
 
 //##########################################################################################################//
 //                                               CURSOR EVENTS                                              //
