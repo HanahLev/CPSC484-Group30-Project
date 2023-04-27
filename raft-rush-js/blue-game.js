@@ -138,7 +138,7 @@ function World() {
             document.getElementById("variable-content").style.visibility =
               "visible";
             document.getElementById("variable-content").innerHTML =
-              "Game is paused. Press any key to resume.";
+              "Game is paused. Wave to resume.";
           }
           if (key == up && !paused) {
             character.onUpKeyPressed();
@@ -251,7 +251,7 @@ function World() {
         var variableContent = document.getElementById("variable-content");
         variableContent.style.visibility = "visible";
         variableContent.innerHTML =
-          "Game over! Press the down arrow to continue.";
+          "Game over! Raise your right hand to continue.";
 
       }
 
